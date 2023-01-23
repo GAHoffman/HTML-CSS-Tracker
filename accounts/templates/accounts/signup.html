@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Tracker - Login
+Tracker - Sign Up!
 {% endblock title %}
 
 {% block content %}
 <main>
     <div>
-        <h1>Login</h1>
+        <h1>Signup</h1>
         <form method="post">
             {% csrf_token %}
-            {{ login_form.as_p }}
-            <button>Login</button>
+            {{ signup_form.as_p }}
+            <button>Signup</button>
         </form>
     </div>
 </main>
