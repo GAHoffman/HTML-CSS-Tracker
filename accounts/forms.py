@@ -1,6 +1,9 @@
 from django import forms
 
 
+# Login Form inheriting from forms.Form
+# Creates a blank form with specified inputs
+# rather than based on a Model and its attributes
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(
@@ -9,6 +12,7 @@ class LoginForm(forms.Form):
     )
 
 
+# Signup Form inheriting from forms.Form
 class SignUpForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(

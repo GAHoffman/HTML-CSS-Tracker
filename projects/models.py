@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
 
-# Create your models here.
+
+# Project Model inheriting from models.Model
 class Project(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()

@@ -3,7 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from accounts.forms import LoginForm, SignUpForm
 
-# Create your views here.
+
+# View for User Login
 def user_login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -27,11 +28,13 @@ def user_login(request):
     return render(request, "accounts/login.html", context)
 
 
+# View for User Logout
 def user_logout(request):
     logout(request)
     return redirect("login")
 
 
+# View for User Signup
 def signup(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)

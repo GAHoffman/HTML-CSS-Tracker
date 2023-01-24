@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
-# redirect to main page
+
+# redirect to main page which is 'list_projects'
 def redirect_to_home_page(request):
     return redirect("list_projects")
 
 
+# creating prefix to our Django App paths
+# Django project is main controller, so requests go through
+# project path first hence the 'include' App.urls
 urlpatterns = [
     path("", redirect_to_home_page, name="home"),
     path("admin/", admin.site.urls),
