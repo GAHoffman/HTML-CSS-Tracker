@@ -1,32 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Project - {{ project_object.name }}
+Tracker - My Tasks
 {% endblock title %}
 
 {% block content %}
 <main>
     <div>
-        <h1>{{ project_object.name }}</h1>
-        <p>{{ project_object.description }}</p>
-        <h2>Tasks</h2>
-        <p><a href="{% url 'create_task' %}">Create a new task</a></p>
-        {% if project_object.tasks.all %}
+        <h1>My Tasks</h1>
+        {% if list_tasks %}
         <table>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Assignee</th>
                     <th>Start date</th>
                     <th>Due date</th>
                     <th>Is completed</th>
                 </tr>
             </thead>
             <tbody>
-                {% for task in project_object.tasks.all %}
+                {% for task in list_tasks %}
                 <tr>
                     <td>{{ task.name }}</td>
-                    <td>{{ task.assignee }}</td>
                     <td>{{ task.start_date }}</td>
                     <td>{{ task.due_date }}</td>
                     <td>{{ task.is_completed|yesno }}</td>
@@ -35,7 +30,7 @@ Project - {{ project_object.name }}
             </tbody>
         </table>
         {% else %}
-        <p>This project has no tasks</p>
+        <p>You have no tasks</p>
         {% endif %}
     </div>
 </main>
