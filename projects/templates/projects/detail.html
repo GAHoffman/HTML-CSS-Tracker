@@ -10,9 +10,7 @@ Project - {{ project_object.name }}
         <h1>{{ project_object.name }}</h1>
         <p>{{ project_object.description }}</p>
         <h2>Tasks</h2>
-        {% if not project_object.tasks.all %}
-        <p>This project has no tasks</p>
-        {% else %}
+        {% if project_object.tasks.all %}
         <table>
             <thead>
                 <tr>
@@ -35,6 +33,8 @@ Project - {{ project_object.name }}
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+        <p>This project has no tasks</p>
         {% endif %}
     </div>
 </main>

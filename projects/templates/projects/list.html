@@ -22,7 +22,7 @@ Tracker - My Projects
                     {% for project in list_projects %}
                     <tr>
                         <td><a href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
-                        <td>{{ project.tasks.count }}</td>
+                        <td>{{ project.tasks.all|length }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
