@@ -5,13 +5,14 @@
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
+        <div class="my-tasks-list">
             <h1>My Tasks</h1>
             {% if list_tasks %}
                 <table>
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Project</th>
                             <th>Start date</th>
                             <th>Due date</th>
                             <th>Is completed</th>
@@ -20,7 +21,8 @@
                     <tbody>
                         {% for task in list_tasks %}
                             <tr>
-                                <td>{{ task.name }}</td>
+                                <td><a href="{% url 'show_task' task.id %}">{{ task.name }}</a></td>
+                                <td>{{ task.project.name }}</td>
                                 <td>{{ task.start_date }}</td>
                                 <td>{{ task.due_date }}</td>
                                 <td>{{ task.is_completed|yesno }}</td>

@@ -20,7 +20,7 @@ from django.shortcuts import redirect
 
 # redirect to main page which is 'list_projects'
 def redirect_to_home_page(request):
-    return redirect("list_projects")
+    return redirect("welcome")
 
 
 # creating prefix to our Django App paths
@@ -29,6 +29,7 @@ def redirect_to_home_page(request):
 urlpatterns = [
     path("", redirect_to_home_page, name="home"),
     path("admin/", admin.site.urls),
+    path("welcome/", include("welcome.urls")),
     path("projects/", include("projects.urls")),
     path("accounts/", include("accounts.urls")),
     path("tasks/", include("tasks.urls")),

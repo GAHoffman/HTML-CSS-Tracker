@@ -31,7 +31,7 @@ def user_login(request):
 # View for User Logout
 def user_logout(request):
     logout(request)
-    return redirect("login")
+    return redirect("welcome")
 
 
 # View for User Signup

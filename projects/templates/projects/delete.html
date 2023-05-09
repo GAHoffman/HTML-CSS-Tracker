@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Task - {{ project_object.name }}
+{% endblock title %}
+
+{% block content %}
+<main>
+    <div>
+        <h1>Are you sure you want to delete?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button>Delete</button>
+        </form>
+    </div>
+</main>
+{% endblock content %}

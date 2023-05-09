@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Update Project - {{ project_object.name }}
+{% endblock title %}
+
+{% block content %}
+<main>
+    <div>
+        <h1>Update Project - {{ project_object.name }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ project_form.as_p }}
+            <button>Update</button>
+        </form>
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="logo">CASH<b>.</b></div>
+        <ul class="navItems">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'welcome' %}">home</a></li>
+          <li><a href="{% url 'show_my_tasks' %}">My Tasks</a></li>
+          <li><a href="{% url 'list_projects' %}">My projects</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'welcome' %}">Home</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Signup</a></li>
+          {% endif %}
+        </ul>
+        <div class="toggleSwitch">
+          <i class="fa fa-sun"></i>
+          <i class="fa fa-moon"></i>
+        </div>
+        <div class="links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </nav>
+
+      <div class="wrapper">
+        <div class="cols cols0">
+          <span class="topline">Hello</span>
+          <h1>Help <span class="multiText"></span></h1>
+          <p>
+            Life is a collaboration and accumulation of Casual Habits or CASH
+            for short. Chance favors the prepared, so in order to live wealthy,
+            starting early is the greatest opportunity.
+          </p>
+          <div class="btns">
+            <button>Login</button>
+            <button>Sign Up</button>
+          </div>
+        </div>
+        <div class="cols cols1">
+          <div class="imgbox">
+            <img
+              src="{% static 'images/Notebook.png' %}"
+              alt="notebook"
+              id="notebook"
+            />
+            <img src="{% static 'images/clock.png' %}" alt="clock" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS code running scripts for multitext typed line and dark mode setting -->
+    <script>
+      const toggleSwitch = document.querySelector(".toggleSwitch");
+      toggleSwitch.addEventListener("click", function () {
+        document.body.classList.toggle("switch");
+      });
+    </script>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+      var typingEffect = new Typed(".multiText", {
+        strings: ["coordinate", "plan", "deliver"],
+        loop: true,
+        typeSpeed: 250,
+        backSpeed: 250,
+        backdelay: 1500,
+      });
+    </script>
+  </body>
+</html>

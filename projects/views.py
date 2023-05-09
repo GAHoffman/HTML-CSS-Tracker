@@ -32,10 +32,42 @@ def create_project(request):
         if form.is_valid():
             project = form.save(False)
             project.save()
-            return redirect("list_projects")
+            return redirect("show_project", id=project.id)
     else:
         form = ProjectForm()
     context = {
         "project_form": form,
     }
     return render(request, "projects/create.html", context)
+
+
+# View for editing Project
+@login_required
+def edit_project(request, id):
+    project = get_object_or_404(Project, id=id)
+    if request.method == "POST":
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect("show_project", id=project.id)
+    else:
+        form = ProjectForm(instance=project)
+    context = {
+        "project_object": project,
+        "project_form": form,
+    }
+    return render(request, "projects/edit.html", context)
+
+
+# View for deleting Project
+@login_required
+def delete_project(request, id):
+    project = get_object_or_404(Project, id=id)
+    if request.method == "POST":
+        project.delete()
+        return redirect("list_projects")
+
+    context = {
+        "project_object": project,
+    }
+    return render(request, "projects/delete.html", context)

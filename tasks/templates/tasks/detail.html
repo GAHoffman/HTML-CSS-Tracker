@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Task - {{ task_object.name }}
+{% endblock title %}
+
+{% block content %}
+<main>
+    <div class="task-detail">
+        <p><a href="{% url 'edit_task' task_object.id %}">Edit Task</a></p>
+        <p><a href="{% url 'delete_task' task_object.id %}">Delete Task</a></p>
+        <p>Start Date: {{ task_object.start_date }}</p>
+        <p>Due Date: {{ task_object.due_date }}</p>
+        <h1>Task - {{ task_object.name }}</h1>
+        <h3>Related Project: <a href="{% url 'show_project' task_object.project.id %}">{{ task_object.project.name }}</a></h3>
+        <p>{{ task_object.description }}</p>
+    </div>
+</main>
+{% endblock content %}
