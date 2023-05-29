@@ -256,6 +256,10 @@ button:hover {
   background-color: #75f2fb;
 }
 
+a {
+  text-decoration: none;
+}
+
 .imgbox {
   position: relative;
   width: 100%;
